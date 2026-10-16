@@ -88,7 +88,7 @@ export default function Hero() {
                 style={{ position: 'absolute', inset: 0, background: '#10b05a', overflow: 'hidden' }}
               >
                 <motion.img
-                  src="/profile.svg"
+                  src="/profile.png"
                   alt={profile.name}
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
