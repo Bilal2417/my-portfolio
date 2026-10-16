@@ -12,7 +12,7 @@ export default function Footer() {
   const socials = [
     { Icon: GitHubIcon, href: profile.socials.github, label: 'GitHub' },
     { Icon: LinkedInIcon, href: profile.socials.linkedin, label: 'LinkedIn' },
-    { Icon: InstagramIcon, href: profile.socials.instagram, label: 'Instagram' },
+    // { Icon: InstagramIcon, href: profile.socials.instagram, label: 'Instagram' },
   ];
   return (
     <Box component="footer" sx={{ pb: 4, pt: 6 }}>

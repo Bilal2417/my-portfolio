@@ -23,7 +23,7 @@ const fade = (delay) => ({
 export default function Hero() {
   const socials = [
     { Icon: GitHubIcon, href: profile.socials.github, label: 'GitHub' },
-    { Icon: InstagramIcon, href: profile.socials.instagram, label: 'Instagram' },
+    // { Icon: InstagramIcon, href: profile.socials.instagram, label: 'Instagram' },
     { Icon: LinkedInIcon, href: profile.socials.linkedin, label: 'LinkedIn' },
   ];
 
