@@ -9,7 +9,7 @@ export const profile = {
   email: 'bilalarsal.dev@gmail.com',
   phone: '+92 328 920 1739',
   address: 'Faisalabad, Pakistan',
-  cv: '/1_M_Bilal_Arsal_CV.pdf',
+  cv: '/01_M_Bilal_Arsal_CV.pdf',
   socials: {
     github: 'https://github.com/Bilal2417',
     linkedin: 'https://linkedin.com/in/bilal-arsal-702151314',
