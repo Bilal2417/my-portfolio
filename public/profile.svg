@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 390" preserveAspectRatio="xMidYMax slice">
+  <rect width="330" height="390" fill="#10b05a"/>
+  <!-- shoulders -->
+  <path d="M30 390 C30 320 90 290 165 290 C240 290 300 320 300 390 Z" fill="#ffffff"/>
+  <!-- neck -->
+  <rect x="140" y="240" width="50" height="60" rx="18" fill="#c68a5e"/>
+  <!-- head -->
+  <ellipse cx="165" cy="190" rx="62" ry="72" fill="#d99a6c"/>
+  <!-- hair -->
+  <path d="M100 180 C95 110 140 90 170 92 C215 92 238 125 230 182 C215 150 190 140 165 140 C135 140 112 155 100 180 Z" fill="#2a1a12"/>
+  <!-- smile -->
+  <path d="M138 222 Q165 245 192 222" stroke="#7a3f28" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <circle cx="142" cy="190" r="5" fill="#2a1a12"/>
+  <circle cx="188" cy="190" r="5" fill="#2a1a12"/>
+  <!-- laptop badge -->
+  <text x="165" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#10b05a">&lt;/&gt;</text>
+</svg>
