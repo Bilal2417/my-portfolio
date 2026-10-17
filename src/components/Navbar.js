@@ -16,6 +16,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { nav, profile } from '../data';
+import { alpha } from '@mui/material/styles';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -30,9 +31,16 @@ export default function Navbar() {
         color="inherit"
         elevation={0}
         sx={{
-          bgcolor: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
+          bgcolor: (t) => (scrolled ? alpha(t.palette.background.default, 0.92) : 'transparent'),
           backdropFilter: scrolled ? 'blur(10px)' : 'none',
-          boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,0.07)' : 'none',
+          boxShadow: (t) =>
+            scrolled
+              ? t.palette.mode === 'dark'
+                ? '0 4px 24px rgba(0,0,0,0.45)'
+                : '0 4px 24px rgba(0,0,0,0.07)'
+              : 'none',
+          borderBottom: (t) =>
+            scrolled && t.palette.mode === 'dark' ? `1px solid ${t.palette.divider}` : 'none',
           transition: 'all .3s ease',
         }}
       >
@@ -76,6 +84,7 @@ export default function Navbar() {
                     textDecoration: 'none',
                     fontSize: 14,
                     fontWeight: 500,
+                    fontFamily: `var(--font-sans),"Helvetica Neue",Arial,sans-serif`,
                     '&::after': {
                       content: '""',
                       position: 'absolute',
@@ -127,7 +136,9 @@ export default function Navbar() {
           <List>
             {nav.map((n) => (
               <ListItemButton key={n.href} component="a" href={n.href} onClick={() => setOpen(false)}>
-                <ListItemText primary={n.label} />
+                <ListItemText sx={{
+                  fontFamily: `var(--font-sans),"Helvetica Neue",Arial,sans-serif`,
+                }} primary={n.label} />
               </ListItemButton>
             ))}
           </List>

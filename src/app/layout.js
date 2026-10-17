@@ -1,24 +1,27 @@
-import './globals.css';
-import ThemeRegistry from '../components/ThemeRegistry';
+// src/app/layout.jsx  (merge this into your existing layout: keep your metadata, fonts, etc.)
+import "./globals.css";
+import ThemeModeProvider from "../components/ThemeModeProvider";
+import { Plus_Jakarta_Sans } from 'next/font/google';
 
-export const metadata = {
-  title: 'Bilal | MERN Stack Developer',
-  description: 'Portfolio of Bilal, a MERN stack developer building scalable full-stack web apps.',
-};
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+// Runs before first paint so a saved dark choice doesn't flash white on reload.
+const setInitialTheme = `try{var m=localStorage.getItem("portfolio-color-mode");if(m==="dark"||m==="light")document.documentElement.setAttribute("data-theme",m)}catch(e){}`;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning: the script above sets data-theme on <html> before React hydrates
+    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+        <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
       </head>
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        {/* Replaces any ThemeProvider you currently have around {children}. */}
+        <ThemeModeProvider>{children}</ThemeModeProvider>
       </body>
     </html>
   );

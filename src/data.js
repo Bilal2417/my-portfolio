@@ -25,9 +25,12 @@ export const nav = [
 ];
 
 export const stats = [
-  { value: 20, suffix: '+', label: 'Satisfied clients' },
-  { value: 40, suffix: '+', label: 'Projects completed' },
-  { value: 15, suffix: '+', label: 'Reviews given' },
+  { value: 5, suffix: '+', label: 'Featured Projects' },
+  { value: 10, suffix: '+', label: 'Technologies' },
+  { value: 5, suffix: '+', label: 'Api Integrations' },
+  // { value: 20, suffix: '+', label: 'Satisfied clients' },
+  // { value: 40, suffix: '+', label: 'Projects completed' },
+  // { value: 15, suffix: '+', label: 'Reviews given' },
 ];
 
 export const skills = [

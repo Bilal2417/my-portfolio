@@ -68,7 +68,7 @@ export default function Skills() {
                           }}
                         >
                           <Icon sx={{ color: 'primary.main', mb: 1.5 }} />
-                          <Typography variant="h3" sx={{ mb: 0.8 }}>
+                          <Typography variant="h3" sx={{ color : "#111", mb: 0.8 }}>
                             {s.title}
                           </Typography>
                           <Typography sx={{ color: 'text.secondary', fontSize: 12.5 }}>{s.text}</Typography>

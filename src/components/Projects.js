@@ -35,7 +35,7 @@ export default function Projects() {
               <Typography sx={{ color: 'text.secondary', fontSize: 14, mb: 4 }}>
                 A selection of full-stack projects I have built and shipped recently.
               </Typography>
-              <Button component="a" href={profile.socials.github} target="_blank" rel="noreferrer" variant="contained">
+              <Button component="a" href={"/projects"} target="_blank" rel="noreferrer" variant="contained">
                 Show More
               </Button>
             </Reveal>

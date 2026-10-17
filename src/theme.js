@@ -15,7 +15,7 @@ const theme = createTheme({
   },
   shape: { borderRadius: 6 },
   typography: {
-    fontFamily: '"Poppins", "Helvetica Neue", Arial, sans-serif',
+    fontFamily: 'var(--font-sans), "Helvetica Neue", Arial, sans-serif',
     h1: { fontWeight: 600, fontSize: 'clamp(2.2rem, 5vw, 3.4rem)', lineHeight: 1.2 },
     h2: { fontWeight: 600, fontSize: 'clamp(1.7rem, 3.4vw, 2.3rem)', lineHeight: 1.25 },
     h3: { fontWeight: 600, fontSize: '1.1rem' },
@@ -31,3 +31,4 @@ const theme = createTheme({
 });
 
 export default theme;
+

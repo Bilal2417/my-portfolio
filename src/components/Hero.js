@@ -78,7 +78,8 @@ export default function Hero() {
                 style={{
                   position: 'absolute',
                   inset: '30px -28px -30px 28px',
-                  border: '3px solid #111',
+                  border: '3px solid',
+                  borderColor : "background.default"
                 }}
               />
               <motion.div
