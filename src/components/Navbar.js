@@ -63,6 +63,7 @@ export default function Navbar() {
                   display: 'grid',
                   placeItems: 'center',
                   fontSize: 20,
+                  fontFamily : "Expansiva"
                 }}
               >
                 {profile.firstName[0]}

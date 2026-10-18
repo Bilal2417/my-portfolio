@@ -56,19 +56,25 @@ export default function Skills() {
                           sx={{
                             p: 3,
                             height: '100%',
-                            bgcolor: '#fff',
-                            borderRadius: 2,
-                            boxShadow: '0 10px 40px rgba(16,176,90,0.10)',
+                            bgcolor: (theme) =>
+                              theme.palette.mode === 'dark' ? '#121713' : '#ffffff',
+                            boxShadow: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? '0 10px 40px rgba(0,0,0,0.25)'
+                                : '0 10px 40px rgba(16,176,90,0.10)',
+                            borderRadius: 2, 
                             border: '1px solid transparent',
                             transition: 'border-color .3s, box-shadow .3s',
                             '&:hover': {
-                              borderColor: 'primary.main',
-                              boxShadow: '0 16px 50px rgba(16,176,90,0.22)',
+                              borderColor: 'primary.main', boxShadow: (theme) =>
+                                theme.palette.mode === 'dark'
+                                  ? '0 16px 50px rgba(16,176,90,0.15)'
+                                  : '0 16px 50px rgba(16,176,90,0.22)',
                             },
                           }}
                         >
                           <Icon sx={{ color: 'primary.main', mb: 1.5 }} />
-                          <Typography variant="h3" sx={{ color : "#111", mb: 0.8 }}>
+                          <Typography variant="h3" sx={{ mb: 0.8 }}>
                             {s.title}
                           </Typography>
                           <Typography sx={{ color: 'text.secondary', fontSize: 12.5 }}>{s.text}</Typography>

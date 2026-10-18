@@ -11,6 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { PROJECTS, IMG_BASE } from "../../components/ProjectsData";
 import Navbar from "../../components/Navbar";
+import { FloatingDots } from "../../components/Dots";
 
 // Theme + light/dark toggle now come from <ThemeModeProvider> in app/layout (see ThemeModeProvider.jsx).
 const GITHUB = "https://github.com/Bilal2417";
@@ -67,18 +68,56 @@ function ProjectCard({ project, index, onOpen }) {
   const [imgFailed, setImgFailed] = useState(false);
   return (
     <Fade in={shown} timeout={600} style={{ transitionDelay: `${(index % 3) * 80}ms` }}>
-      <Card ref={ref} variant="outlined"
+      <Card
+        ref={ref}
+        variant="outlined"
         sx={{
-          display: "flex", flexDirection: "column", overflow: "hidden", bgcolor: "background.paper",
-          transition: "transform .3s, border-color .3s, box-shadow .3s",
-          "&:hover": { transform: "translateY(-6px)", borderColor: "rgba(16,176,90,.6)", boxShadow: "0 22px 50px -24px rgba(16,176,90,.45)" },
-          "&:hover .shot-img": { transform: "scale(1.07)" },
-          "&:hover .shot-view": { opacity: 1, transform: "none" },
-        }}>
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+          bgcolor: "background.paper",
+          borderRadius: 2,
+
+          // Smooth animation on hover and hover-out
+          transition: "transform 600ms ease, border-color 400ms ease, box-shadow 400ms ease",
+          willChange: "transform",
+
+          "&:hover": {
+            transform: "translateY(-6px)",
+            borderColor: "rgba(16,176,90,.6)",
+            boxShadow: "0 22px 50px -24px rgba(16,176,90,.45)",
+          },
+
+          // Image zoom animation
+          "& .shot-img": {
+            transition: "transform 500ms cubic-bezier(0.22, 1, 0.36, 1)",
+            willChange: "transform",
+          },
+
+          "&:hover .shot-img": {
+            transform: "scale(1.07)",
+          },
+
+          // Overlay slide-in animation
+          "& .shot-view": {
+            opacity: 0,
+            transform: "translateY(12px)",
+            transition: "opacity 300ms ease, transform 400ms cubic-bezier(0.22, 1, 0.36, 1)",
+            willChange: "opacity, transform",
+          },
+
+          "&:hover .shot-view": {
+            opacity: 1,
+            transform: "translateY(0)",
+          },
+        }}
+      >
         <Box component="button" type="button" onClick={onOpen} aria-label={`View details of ${project.title}`}
-          sx={{ position: "relative", p: 0, border: 0, cursor: "pointer", aspectRatio: "16 / 10", overflow: "hidden", display: "block", width: "100%",
+          sx={{
+            position: "relative", p: 0, border: 0, cursor: "pointer", aspectRatio: "16 / 10", overflow: "hidden", display: "block", width: "100%",
             background: (t) => t.palette.app.shotBg,
-            "&:focus-visible .shot-view": { opacity: 1, transform: "none" } }}>
+            "&:focus-visible .shot-view": { opacity: 1, transform: "none" }
+          }}>
           {imgFailed ? (
             <Box sx={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", fontSize: "2.4rem", fontWeight: 700, color: (t) => t.palette.app.fallbackText }}>
               {project.title[0]}
@@ -194,14 +233,18 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <Box sx={{ bgcolor: "background.default", color: "text.primary", minHeight: "100vh", transition: "background-color .25s, color .25s" }}>
+      <Box sx={{ bgcolor: "background.default", color: "text.primary", minHeight: "100vh", transition: "background-color .25s, color .25s", position: "relative" }}>
         <Navbar />
-
+        <FloatingDots />
         <Box component="main">
           {/* Hero */}
-          <Box sx={{ position: "relative", overflow: "hidden", pt: 9, pb: 5,
-            "&::before": { content: '""', position: "absolute", top: -220, left: "50%", width: 640, height: 640, transform: "translateX(-50%)", pointerEvents: "none",
-              background: (t) => `radial-gradient(circle, ${t.palette.app.glow}, transparent 65%)` } }}>
+          <Box sx={{
+            position: "relative", overflow: "hidden", pt: 9, pb: 5,
+            // "&::before": {
+            //   content: '""', position: "absolute", top: -220, left: "50%", width: 640, height: 640, transform: "translateX(-50%)", pointerEvents: "none",
+            //   background: (t) => `radial-gradient(circle, ${t.palette.app.glow}, transparent 65%)`
+            // }
+          }}>
             <Container maxWidth="lg" sx={{ position: "relative" }}>
               <Button href="/" startIcon={<ArrowBackIcon fontSize="small" />} color="inherit" size="small"
                 sx={{ color: "text.secondary", mb: 2.5, px: 0, "&:hover": { ...hoverAccent, bgcolor: "transparent" } }}>
@@ -237,9 +280,12 @@ export default function ProjectsPage() {
                 ))}
               </Stack>
               <TextField size="small" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search projects…"
-                type="search" slotProps={{ htmlInput: { "aria-label": "Search projects" }, input: {
-                  startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
-                  sx: { borderRadius: 999, bgcolor: (t) => t.palette.app.field } } }}
+                type="search" slotProps={{
+                  htmlInput: { "aria-label": "Search projects" }, input: {
+                    startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
+                    sx: { borderRadius: 999, bgcolor: (t) => t.palette.app.field }
+                  }
+                }}
                 sx={{ minWidth: { md: 260 } }} />
             </Stack>
 
@@ -255,8 +301,10 @@ export default function ProjectsPage() {
             )}
 
             {/* CTA */}
-            <Box sx={{ mt: 4, mb: 9, p: { xs: 4, sm: 6 }, textAlign: "center", borderRadius: 6, border: 1, borderColor: "divider",
-              background: (t) => t.palette.app.cta }}>
+            <Box sx={{
+              mt: 4, mb: 9, p: { xs: 4, sm: 6 }, textAlign: "center", borderRadius: 6, border: 1, borderColor: "divider",
+              background: (t) => t.palette.app.cta
+            }}>
               <Typography variant="h5" component="h2" fontWeight={700} sx={{ mb: 1 }}>Have a project in mind?</Typography>
               <Typography color="text.secondary" sx={{ mb: 3 }}>Let's build something new, different and more meaningful.</Typography>
               <Stack direction="row" spacing={1.5} useFlexGap sx={{ justifyContent: "center", flexWrap: "wrap" }}>

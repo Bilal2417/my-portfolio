@@ -40,7 +40,7 @@ export const PROJECTS = [
     id: "trd-network",
     title: "Trd Network",
     category: "Web3",
-    image: "/projects/trdnetwork_thumbnail.PNG",
+    image: "/projects/trdNetwork_thumbnail.PNG",
     live: "https://trdnetworkbilly.netlify.app/",
     repo: "https://github.com/Bilal2417",
     description:
