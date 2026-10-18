@@ -7,6 +7,15 @@ import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
+export const metadata = {
+  title: "My Portfolio | Web Developer",
+  description:
+    "Explore my portfolio, projects, skills, and experience as a web developer.",
+  icons: {
+    icon: "favicon.ico",
+  },
+};
+
 export default function Home() {
   return (
     <main>
